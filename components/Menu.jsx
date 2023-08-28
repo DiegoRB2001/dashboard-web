@@ -13,8 +13,8 @@ const menuRoutes = [
 
 function Menu() {
   return (
-    <div className="w-[20%] bg-[#48DB96] h-screen">
-      <div className={`bg-[#8EE1BA] mb-2 text-lg ${oswald.className}`}>
+    <div className="w-[20%] bg-terciary h-screen">
+      <div className={`bg-secondary mb-2 text-lg ${oswald.className}`}>
         <h1 className="text-center">Menú</h1>
       </div>
       <ol>
@@ -22,7 +22,7 @@ function Menu() {
           <Link href={menu.ruta}>
             <li
               key={index}
-              className={`${raleway.className} hover:bg-[#8EE1BA] active:bg-green-400 pl-2`}
+              className={`${raleway.className} hover:bg-secondary active:bg-primary pl-2`}
             >
               {menu.nombre}
             </li>

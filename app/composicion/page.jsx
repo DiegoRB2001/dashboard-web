@@ -27,7 +27,7 @@ export default (Composicion) => {
   const [error, setError] = useState("");
 
   return (
-    <div className="bg-[#2CA876] w-full">
+    <div className="bg-primary w-full">
       <h1 className={`font-bold text-3xl mt-5 text-center ${oswald.className}`}>
         Composicion corporal
       </h1>
@@ -88,9 +88,9 @@ export default (Composicion) => {
                 <h1 className="font-bold">Bicipital</h1>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="number"
+                  type="text"
                   onChange={(e) => {
-                    setBicipital(parseInt(e.target.value));
+                    setBicipital(parseFloat(e.target.value));
                   }}
                 />
               </div>
@@ -98,9 +98,9 @@ export default (Composicion) => {
                 <h1 className="font-bold">Tricipital</h1>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="number"
+                  type="text"
                   onChange={(e) => {
-                    setTricipital(parseInt(e.target.value));
+                    setTricipital(parseFloat(e.target.value));
                   }}
                 />
               </div>
@@ -109,9 +109,9 @@ export default (Composicion) => {
               <h1 className="font-bold">Supescapular</h1>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="number"
+                type="text"
                 onChange={(e) => {
-                  setSupescapular(parseInt(e.target.value));
+                  setSupescapular(parseFloat(e.target.value));
                 }}
               />
             </div>
@@ -119,16 +119,16 @@ export default (Composicion) => {
               <h1 className="font-bold">Supraileaco</h1>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="number"
+                type="text"
                 onChange={(e) => {
-                  setSupraileaco(parseInt(e.target.value));
+                  setSupraileaco(parseFloat(e.target.value));
                 }}
               />
             </div>
             <input
               type="submit"
               value="Calcular"
-              className="bg-green-500 text-white font-bold py-2 px-8 hover:bg-green-700 active:bg-green-400"
+              className="bg-primary text-white font-bold py-2 px-8 hover:bg-secondary active:bg-primary"
               onClick={() => {
                 if (
                   [tricipital, bicipital, supescapular, supraileaco].some(
