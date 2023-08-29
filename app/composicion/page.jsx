@@ -21,8 +21,12 @@ export default (Composicion) => {
   const [tricipital, setTricipital] = useState(0);
   const [supescapular, setSupescapular] = useState(0);
   const [supraileaco, setSupraileaco] = useState(0);
+  const [biestiloideo, setBiestiloideo] = useState(0);
+  const [femur, setFemur] = useState(0);
   const [densidad, setDensidad] = useState(0);
   const [PGC, setPGC] = useState(0);
+  const [masaOsea, setMasaOsea] = useState(0);
+  const [masaResidual, setMasaResidual] = useState(0);
   const [calculado, setCalculado] = useState(false);
   const [error, setError] = useState("");
 
@@ -56,7 +60,7 @@ export default (Composicion) => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
                   onChange={(e) => {
-                    setPeso(e.target.value);
+                    setPeso(parseFloat(e.target.value));
                   }}
                 />
               </div>
@@ -68,7 +72,7 @@ export default (Composicion) => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
                   onChange={(e) => {
-                    setTalla(e.target.value);
+                    setTalla(parseFloat(e.target.value));
                   }}
                 />
               </div>
@@ -125,18 +129,50 @@ export default (Composicion) => {
                 }}
               />
             </div>
+            <div className="flex flex-row gap-5">
+              <div>
+                <h1 className="font-bold">Biestiloideo</h1>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  onChange={(e) => {
+                    setBiestiloideo(parseFloat(e.target.value));
+                  }}
+                />
+              </div>
+              <div>
+                <h1 className="font-bold">Fémur</h1>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  onChange={(e) => {
+                    setFemur(parseFloat(e.target.value));
+                  }}
+                />
+              </div>
+            </div>
             <input
               type="submit"
               value="Calcular"
               className="bg-primary text-white font-bold py-2 px-8 hover:bg-secondary active:bg-primary"
               onClick={() => {
                 if (
-                  [tricipital, bicipital, supescapular, supraileaco].some(
-                    (v) => v <= 0
-                  ) ||
-                  [tricipital, bicipital, supescapular, supraileaco].includes(
-                    NaN
-                  )
+                  [
+                    tricipital,
+                    bicipital,
+                    supescapular,
+                    supraileaco,
+                    biestiloideo,
+                    femur,
+                  ].some((v) => v <= 0) ||
+                  [
+                    tricipital,
+                    bicipital,
+                    supescapular,
+                    supraileaco,
+                    biestiloideo,
+                    femur,
+                  ].includes(NaN)
                 ) {
                   setError(
                     "ERROR: verifica que los datos del formulario sean correctos."
@@ -150,17 +186,25 @@ export default (Composicion) => {
                     ? 1.1765 - 0.0744 * Math.log10(x1)
                     : 1.1567 - 0.0717 * Math.log10(x1);
                 const porcentaje = 495 / d - 450;
+                const osea =
+                  (Math.pow(Math.pow(talla, 2) * femur * biestiloideo * 400),
+                  0.712) * 3.02;
+                const residual = genero == "Hombre" ? peso * 0.24 : peso * 0.21;
                 setDensidad(d);
                 setPGC(porcentaje);
+                setMasaOsea(osea);
+                setMasaResidual(residual);
                 setCalculado(true);
               }}
             />
           </div>
-          <div className="mt-5 p-0 text-lg bg-white w-3/5 h-32 overflow-clip flex items-center justify-center text-center rounded-md shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]">
+          <div className="mt-5 text-lg bg-white w-3/5 h-32 overflow-clip flex items-center justify-center text-center rounded-md shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]">
             {calculado && (
               <div>
-                <div className="ml-5 my-2">Densidad calculada: {densidad}</div>
-                <div className="ml-5">PGC calculado: {PGC}</div>
+                <div>Densidad calculada: {densidad}</div>
+                <div>PGC calculado: {PGC}</div>
+                <div>Masa ósea calculada: {masaOsea}</div>
+                <div>Masa residual calculada: {masaResidual}</div>
               </div>
             )}
             {!calculado && <div className="ml-5 my-2">{error}</div>}
