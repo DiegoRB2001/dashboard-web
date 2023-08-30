@@ -37,7 +37,7 @@ export default (Composicion) => {
       </h1>
       <form onSubmit={handleSubmit}>
         <div
-          className={`flex flex-col items-center gap-5 mt-10 ${raleway.className}`}
+          className={`flex flex-row items-center gap-5 mt-10 justify-center ${raleway.className}`}
         >
           <div className="bg-white p-10 items-center flex flex-col gap-5 justify-center rounded-md shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
             <div className="flex flex-row gap-5">
@@ -55,7 +55,7 @@ export default (Composicion) => {
                 </select>
               </div>
               <div>
-                <h1 className="font-bold">Peso</h1>
+                <h1 className="font-bold">Peso (kg)</h1>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
@@ -67,7 +67,7 @@ export default (Composicion) => {
             </div>
             <div className="flex flex-row gap-5">
               <div>
-                <h1 className="font-bold">Talla</h1>
+                <h1 className="font-bold">Talla (cm)</h1>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
@@ -89,7 +89,7 @@ export default (Composicion) => {
             </div>
             <div className="flex flex-row gap-5">
               <div>
-                <h1 className="font-bold">Bicipital</h1>
+                <h1 className="font-bold">Bicipital (mm)</h1>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
@@ -99,7 +99,7 @@ export default (Composicion) => {
                 />
               </div>
               <div>
-                <h1 className="font-bold">Tricipital</h1>
+                <h1 className="font-bold">Tricipital (mm)</h1>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
@@ -110,7 +110,7 @@ export default (Composicion) => {
               </div>
             </div>
             <div>
-              <h1 className="font-bold">Supescapular</h1>
+              <h1 className="font-bold">Supescapular (mm)</h1>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 type="text"
@@ -120,7 +120,7 @@ export default (Composicion) => {
               />
             </div>
             <div>
-              <h1 className="font-bold">Supraileaco</h1>
+              <h1 className="font-bold">Supraileaco (mm)</h1>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 type="text"
@@ -131,7 +131,7 @@ export default (Composicion) => {
             </div>
             <div className="flex flex-row gap-5">
               <div>
-                <h1 className="font-bold">Biestiloideo</h1>
+                <h1 className="font-bold">Biestiloideo (cm)</h1>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
@@ -141,7 +141,7 @@ export default (Composicion) => {
                 />
               </div>
               <div>
-                <h1 className="font-bold">Fémur</h1>
+                <h1 className="font-bold">Fémur (cm)</h1>
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   type="text"
@@ -187,7 +187,7 @@ export default (Composicion) => {
                     : 1.1567 - 0.0717 * Math.log10(x1);
                 const porcentaje = 495 / d - 450;
                 const osea =
-                  (Math.pow(Math.pow(talla, 2) * femur * biestiloideo * 400),
+                  Math.pow(Math.pow((talla/100), 2) * (femur/100) * (biestiloideo/100) * 400,
                   0.712) * 3.02;
                 const residual = genero == "Hombre" ? peso * 0.24 : peso * 0.21;
                 setDensidad(d);
@@ -198,14 +198,39 @@ export default (Composicion) => {
               }}
             />
           </div>
-          <div className="mt-5 text-lg bg-white w-3/5 h-32 overflow-clip flex items-center justify-center text-center rounded-md shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]">
+          <div className="mt-5 text-lg bg-white w-1/2 h-96 overflow-clip flex items-center justify-center text-center rounded-md shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]">
             {calculado && (
-              <div>
-                <div>Densidad calculada: {densidad}</div>
-                <div>PGC calculado: {PGC}</div>
-                <div>Masa ósea calculada: {masaOsea}</div>
-                <div>Masa residual calculada: {masaResidual}</div>
-              </div>
+              <table>
+              <thead>
+                <tr>
+                  <th className="px-6 py-4">Componente</th>
+                  <th className="px-6 py-4">%</th>
+                  <th className="px-6 py-4">kg</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="px-6 py-4">Masa grasa</td>
+                    <td className="px-6 py-4">{PGC}</td>
+                    <td className="px-6 py-4">{peso*(PGC/100)}</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4">Masa osea</td>
+                    <td className="px-6 py-4">{(masaOsea*100)/peso}</td>
+                    <td className="px-6 py-4">{masaOsea}</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4">Masa residual</td>
+                    <td className="px-6 py-4">{(masaResidual*100)/peso}</td>
+                    <td className="px-6 py-4">{masaResidual}</td>
+                  </tr>
+                                <tr>
+                  <td className="px-6 py-4">Masa muscular</td>
+                  <td className="px-6 py-4">{100-(((masaResidual*100)/peso)+((masaOsea*100)/peso)+PGC)}</td>
+                  <td className="px-6 py-4">{(100-(((masaResidual*100)/peso)+((masaOsea*100)/peso)+PGC)*peso)/100}</td>
+                                </tr>
+                </tbody>
+            </table>
             )}
             {!calculado && <div className="ml-5 my-2">{error}</div>}
           </div>
