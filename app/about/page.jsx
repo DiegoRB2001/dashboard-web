@@ -6,7 +6,7 @@ const raleway = Raleway({ subsets: ["latin"], weight: ["400"] });
 
 export default (About) => {
   return (
-    <div className="w-full bg-primary">
+    <div className="w-full bg-primary h-screen">
       <h1 className={`font-bold text-3xl mt-5 text-center ${oswald.className}`}>
         Acerca de mi
       </h1>

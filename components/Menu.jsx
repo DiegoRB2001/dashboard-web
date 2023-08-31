@@ -13,7 +13,7 @@ const menuRoutes = [
 
 function Menu() {
   return (
-    <div className="w-[20%] bg-terciary h-screen">
+    <div className="w-[20%] bg-terciary">
       <div className={`bg-secondary mb-2 text-lg ${oswald.className}`}>
         <h1 className="text-center">Menú</h1>
       </div>
