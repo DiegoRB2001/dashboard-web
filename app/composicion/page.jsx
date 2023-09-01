@@ -74,10 +74,11 @@ export default (Composicion) => {
     setPMO((osea * 100) / peso);
     setMasaResidual(residual);
     setPMR((residual * 100) / peso);
+    const muscular = 100 - (porcentaje + (osea * 100) / peso + (residual * 100) / peso);
     setMasaMuscular(
-      100 - (porcentaje + (osea * 100) / peso + (residual * 100) / peso)
+      muscular
     );
-    setPMM(peso * (masaMuscular / 100));
+    setPMM(peso * muscular / 100);
     setCalculado(true);
   };
 
