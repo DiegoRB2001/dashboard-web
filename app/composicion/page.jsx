@@ -5,6 +5,8 @@ import { useState } from "react";
 import { Oswald } from "next/font/google";
 import { Raleway } from "next/font/google";
 import Graph from "@/components/Graph";
+import { Table } from "@/components/Table";
+import { Input } from "@/components/Input";
 
 const oswald = Oswald({ subsets: ["latin"], weight: ["400"] });
 const raleway = Raleway({ subsets: ["latin"], weight: ["400"] });
@@ -75,188 +77,127 @@ export default (Composicion) => {
     setPMO((osea * 100) / peso);
     setMasaResidual(residual);
     setPMR((residual * 100) / peso);
-    const muscular = 100 - (porcentaje + (osea * 100) / peso + (residual * 100) / peso);
-    setMasaMuscular(
-      muscular
-    );
-    setPMM(peso * muscular / 100);
+    const muscular =
+      100 - (porcentaje + (osea * 100) / peso + (residual * 100) / peso);
+    setMasaMuscular(muscular);
+    setPMM((peso * muscular) / 100);
     setCalculado(true);
   };
 
   return (
-    <div className="bg-primary w-full 2xl:h-screen">
+    <div className="bg-primary 2xl:h-screen w-screen">
       <h1 className={`font-bold text-3xl mt-5 text-center ${oswald.className}`}>
         Composicion corporal
       </h1>
-      <form onSubmit={handleSubmit}>
-        <div
-          className={`flex  flex-col 2xl:flex-row items-center gap-5 mt-10 justify-center ${raleway.className}`}
-        >
-          <div className="bg-white p-10 items-center flex flex-col gap-5 justify-center rounded-md shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
-            <div className="flex flex-row gap-5">
-              <div>
-                <h1 className="font-bold">Genero</h1>
-                <select
-                  className="shadows border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  name="genero"
-                  onChange={(e) => {
-                    setGenero(e.target.value);
-                  }}
-                >
-                  <option>Hombre</option>
-                  <option>Mujer</option>
-                </select>
-              </div>
-              <div>
-                <h1 className="font-bold">Peso (kg)</h1>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="text"
-                  onChange={(e) => {
-                    setPeso(parseFloat(e.target.value));
-                  }}
+      <div
+        className={`flex flex-col 2xl:flex-row gap-5 mt-10 justify-center ${raleway.className}`}
+      >
+        <div className="flex flex-col 2xl:flex-row gap-5 w-full justify-center">
+          <form onSubmit={handleSubmit}>
+            <div className="bg-white w-1/2 2xl:w-auto p-10 mx-auto flex flex-col gap-5 justify-center items-center rounded-md shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
+              <div className="flex flex-row gap-5">
+                <div>
+                  <h1 className="font-bold">Genero</h1>
+                  <select
+                    className="shadows border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name="genero"
+                    onChange={(e) => {
+                      setGenero(e.target.value);
+                      setCalculado(false);
+                    }}
+                  >
+                    <option>Hombre</option>
+                    <option>Mujer</option>
+                  </select>
+                </div>
+                <Input
+                  name={"Peso (kg)"}
+                  handleChange={setPeso}
+                  setCalculado={setCalculado}
                 />
               </div>
-            </div>
-            <div className="flex flex-row gap-5">
-              <div>
-                <h1 className="font-bold">Talla (cm)</h1>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="text"
-                  onChange={(e) => {
-                    setTalla(parseFloat(e.target.value));
-                  }}
+              <div className="flex flex-row gap-5">
+                <Input
+                  name={"Talla (cm)"}
+                  handleChange={setTalla}
+                  setCalculado={setCalculado}
+                />
+                <Input
+                  name={"Edad"}
+                  handleChange={setEdad}
+                  setCalculado={setCalculado}
                 />
               </div>
-              <div>
-                <h1 className="font-bold">Edad</h1>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="number"
-                  onChange={(e) => {
-                    setEdad(e.target.value);
-                  }}
+              <div className="flex flex-row gap-5">
+                <Input
+                  name={"Bicipital (mm)"}
+                  handleChange={setBicipital}
+                  setCalculado={setCalculado}
+                />
+                <Input
+                  name={"Tricipital (mm)"}
+                  handleChange={setTricipital}
+                  setCalculado={setCalculado}
                 />
               </div>
-            </div>
-            <div className="flex flex-row gap-5">
-              <div>
-                <h1 className="font-bold">Bicipital (mm)</h1>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="text"
-                  onChange={(e) => {
-                    setBicipital(parseFloat(e.target.value));
-                  }}
+              <Input
+                name={"Supescapular (mm)"}
+                handleChange={setSupescapular}
+                setCalculado={setCalculado}
+              />
+              <Input
+                name={"Supraileaco (mm)"}
+                handleChange={setSupraileaco}
+                setCalculado={setCalculado}
+              />
+              <div className="flex flex-row gap-5">
+                <Input
+                  name={"Biestiloideo (cm)"}
+                  handleChange={setBiestiloideo}
+                  setCalculado={setCalculado}
+                />
+                <Input
+                  name={"Fémur (cm)"}
+                  handleChange={setFemur}
+                  setCalculado={setCalculado}
                 />
               </div>
-              <div>
-                <h1 className="font-bold">Tricipital (mm)</h1>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="text"
-                  onChange={(e) => {
-                    setTricipital(parseFloat(e.target.value));
-                  }}
-                />
-              </div>
-            </div>
-            <div>
-              <h1 className="font-bold">Supescapular (mm)</h1>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                onChange={(e) => {
-                  setSupescapular(parseFloat(e.target.value));
-                }}
+                type="submit"
+                value="Calcular"
+                className="bg-primary text-white font-bold py-2 px-8 hover:bg-secondary active:bg-primary"
               />
             </div>
-            <div>
-              <h1 className="font-bold">Supraileaco (mm)</h1>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                onChange={(e) => {
-                  setSupraileaco(parseFloat(e.target.value));
-                }}
-              />
-            </div>
-            <div className="flex flex-row gap-5">
-              <div>
-                <h1 className="font-bold">Biestiloideo (cm)</h1>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="text"
-                  onChange={(e) => {
-                    setBiestiloideo(parseFloat(e.target.value));
-                  }}
-                />
-              </div>
-              <div>
-                <h1 className="font-bold">Fémur (cm)</h1>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="text"
-                  onChange={(e) => {
-                    setFemur(parseFloat(e.target.value));
-                  }}
-                />
-              </div>
-            </div>
-            <input
-              type="submit"
-              value="Calcular"
-              className="bg-primary text-white font-bold py-2 px-8 hover:bg-secondary active:bg-primary"
-            />
-          </div>
-          <div className="my-5 p-5 text-lg bg-white 2xl:w-1/2 w-3/4 h-96 overflow-clip flex flex-col items-center justify-center text-center rounded-md shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]">
-            {calculado && 
-
-              <Graph porcentajes={[PGC, PMO, PMR, PMM]}/>
-              // <table className="w-full">
-              //   <thead>
-              //     <tr className="border-b">
-              //       <th className="px-6 py-4 border-r">Componente</th>
-              //       <th className="px-6 py-4 border-r">%</th>
-              //       <th className="px-6 py-4">kg</th>
-              //     </tr>
-              //   </thead>
-              //   <tbody>
-              //     <tr>
-              //       <td className="px-6 py-4 border-r">Masa grasa</td>
-              //       <td className="px-6 py-4 border-r">{PGC.toFixed(2)}</td>
-              //       <td className="px-6 py-4">{masaGrasa.toFixed(2)}</td>
-              //     </tr>
-              //     <tr>
-              //       <td className="px-6 py-4 border-r">Masa osea</td>
-              //       <td className="px-6 py-4 border-r">{PMO.toFixed(2)}</td>
-              //       <td className="px-6 py-4">{masaOsea.toFixed(2)}</td>
-              //     </tr>
-              //     <tr>
-              //       <td className="px-6 py-4 border-r">Masa residual</td>
-              //       <td className="px-6 py-4 border-r">{PMR.toFixed(2)}</td>
-              //       <td className="px-6 py-4">{masaResidual.toFixed(2)}</td>
-              //     </tr>
-              //     <tr>
-              //       <td className="px-6 py-4 border-r">Masa muscular</td>
-              //       <td className="px-6 py-4 border-r">
-              //         {masaMuscular.toFixed(2)}
-              //       </td>
-              //       <td className="px-6 py-4">{PMM.toFixed(2)}</td>
-              //     </tr>
-              //   </tbody>
-              // </table>
-            }
+          </form>
+          <div className="m-10 2xl:m-0 p-5 min-h-[200px] text-lg bg-white 2xl:w-1/2 flex items-stretch overflow-clip text-center rounded-md shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]">
             {calculado && (
-              <div className="my-3">
-                Densidad calculada: {densidad.toFixed(2)}
+              <div className="w-full h-full flex flex-col gap-5 items-center justify-center">
+                <Table
+                  masaGrasa={masaGrasa}
+                  masaOsea={masaOsea}
+                  masaResidual={masaResidual}
+                  masaMuscular={masaMuscular}
+                  PGC={PGC}
+                  PMO={PMO}
+                  PMR={PMR}
+                  PMM={PMM}
+                />
+                <Graph
+                  porcentajes={[
+                    PGC.toFixed(2),
+                    PMO.toFixed(2),
+                    PMR.toFixed(2),
+                    PMM.toFixed(2),
+                  ]}
+                  calculado={calculado}
+                />
+                <div>Densidad calculada: {densidad.toFixed(2)}</div>
               </div>
             )}
             {!calculado && <div className="ml-5 my-2">{error}</div>}
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };
