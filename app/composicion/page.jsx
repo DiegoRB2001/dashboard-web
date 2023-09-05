@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { Oswald } from "next/font/google";
 import { Raleway } from "next/font/google";
+import Graph from "@/components/Graph";
 
 const oswald = Oswald({ subsets: ["latin"], weight: ["400"] });
 const raleway = Raleway({ subsets: ["latin"], weight: ["400"] });
@@ -210,41 +211,43 @@ export default (Composicion) => {
             />
           </div>
           <div className="my-5 p-5 text-lg bg-white 2xl:w-1/2 w-3/4 h-96 overflow-clip flex flex-col items-center justify-center text-center rounded-md shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]">
-            {calculado && (
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b">
-                    <th className="px-6 py-4 border-r">Componente</th>
-                    <th className="px-6 py-4 border-r">%</th>
-                    <th className="px-6 py-4">kg</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="px-6 py-4 border-r">Masa grasa</td>
-                    <td className="px-6 py-4 border-r">{PGC.toFixed(2)}</td>
-                    <td className="px-6 py-4">{masaGrasa.toFixed(2)}</td>
-                  </tr>
-                  <tr>
-                    <td className="px-6 py-4 border-r">Masa osea</td>
-                    <td className="px-6 py-4 border-r">{PMO.toFixed(2)}</td>
-                    <td className="px-6 py-4">{masaOsea.toFixed(2)}</td>
-                  </tr>
-                  <tr>
-                    <td className="px-6 py-4 border-r">Masa residual</td>
-                    <td className="px-6 py-4 border-r">{PMR.toFixed(2)}</td>
-                    <td className="px-6 py-4">{masaResidual.toFixed(2)}</td>
-                  </tr>
-                  <tr>
-                    <td className="px-6 py-4 border-r">Masa muscular</td>
-                    <td className="px-6 py-4 border-r">
-                      {masaMuscular.toFixed(2)}
-                    </td>
-                    <td className="px-6 py-4">{PMM.toFixed(2)}</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
+            {calculado && 
+
+              <Graph porcentajes={[PGC, PMO, PMR, PMM]}/>
+              // <table className="w-full">
+              //   <thead>
+              //     <tr className="border-b">
+              //       <th className="px-6 py-4 border-r">Componente</th>
+              //       <th className="px-6 py-4 border-r">%</th>
+              //       <th className="px-6 py-4">kg</th>
+              //     </tr>
+              //   </thead>
+              //   <tbody>
+              //     <tr>
+              //       <td className="px-6 py-4 border-r">Masa grasa</td>
+              //       <td className="px-6 py-4 border-r">{PGC.toFixed(2)}</td>
+              //       <td className="px-6 py-4">{masaGrasa.toFixed(2)}</td>
+              //     </tr>
+              //     <tr>
+              //       <td className="px-6 py-4 border-r">Masa osea</td>
+              //       <td className="px-6 py-4 border-r">{PMO.toFixed(2)}</td>
+              //       <td className="px-6 py-4">{masaOsea.toFixed(2)}</td>
+              //     </tr>
+              //     <tr>
+              //       <td className="px-6 py-4 border-r">Masa residual</td>
+              //       <td className="px-6 py-4 border-r">{PMR.toFixed(2)}</td>
+              //       <td className="px-6 py-4">{masaResidual.toFixed(2)}</td>
+              //     </tr>
+              //     <tr>
+              //       <td className="px-6 py-4 border-r">Masa muscular</td>
+              //       <td className="px-6 py-4 border-r">
+              //         {masaMuscular.toFixed(2)}
+              //       </td>
+              //       <td className="px-6 py-4">{PMM.toFixed(2)}</td>
+              //     </tr>
+              //   </tbody>
+              // </table>
+            }
             {calculado && (
               <div className="my-3">
                 Densidad calculada: {densidad.toFixed(2)}
