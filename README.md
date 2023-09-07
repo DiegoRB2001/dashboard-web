@@ -1,8 +1,8 @@
-# Práctica 01 Desarrollo Web - Dashboard web elaborado con Next js
+# Práctica 01 Desarrollo Web - Dashboard web elaborado con Next.js
 
 Autor(es): Diego Rulfo  
 
-Ultima actualización: 2023-09-07
+Última actualización: 2023-09-07
 
 ## Contenido
 - Objetivo
@@ -12,7 +12,7 @@ Ultima actualización: 2023-09-07
 - Links
 
 ## Objetivo
- Conocer el funcionamiento del framework Next js para la elaboración de páginas web.
+ Conocer el funcionamiento del framework Next.js para la elaboración de páginas web.
 
 ## Resúmen
 Esta práctica consistió en elaborar una dashboard básico, con la finalidad de aprender el funcionamiento del Framework Next js. 
@@ -57,14 +57,14 @@ Para instalar todas las dependencias necesarias dentro del proyecto.
 Para ejecutar el proyecto en modo desarrollador.
 
 ## Dependencias utilizadas
-- Node js
+- Node.js
 - Next.js
 - Tailwind CSS
 - Chart.js
 
 ## Links
-- [Instalar Node js](https://nodejs.org/es)
+- [Instalar Node.js](https://nodejs.org/es)
 - [Instalar Git](https://git-scm.com/downloads)
-- [Documentación de Next js](https://nextjs.org/docs)
+- [Documentación de Next.js](https://nextjs.org/docs)
 - [Documentación de Tailwind css](https://tailwindcss.com/docs/installation)
-- [Documentación de Chart js](https://www.chartjs.org/docs/latest/)
+- [Documentación de Chart.js](https://www.chartjs.org/docs/latest/)
