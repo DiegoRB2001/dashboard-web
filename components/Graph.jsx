@@ -1,3 +1,5 @@
+//Graph component contained inside the data chart, it graphs all mass percentages calculated with the given data.
+
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 

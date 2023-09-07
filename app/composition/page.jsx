@@ -1,3 +1,5 @@
+//This contains the body composition dashboard page, able to calculate and display body mass ratio given a set of data.
+
 "use client";
 
 import { useState } from "react";
@@ -12,6 +14,7 @@ const oswald = Oswald({ subsets: ["latin"], weight: ["400"] });
 const raleway = Raleway({ subsets: ["latin"], weight: ["400"] });
 
 export default () => {
+  //All data needed for the page operation is stored inside this useState hook.
   const [data, setData] = useState({
     genre: "Hombre",
     weight: "",
@@ -28,6 +31,7 @@ export default () => {
     error: "",
   });
 
+  //Function to handle form submit and input validation
   const handleSubmit = (e) => {
     e.preventDefault();
     const values = Object.entries(data)

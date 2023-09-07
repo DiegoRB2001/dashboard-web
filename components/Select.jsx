@@ -1,3 +1,5 @@
+//Component for custom select element, used for the genre input.
+
 import React from "react";
 
 export const Select = ({ name, data, setData, labelText }) => {

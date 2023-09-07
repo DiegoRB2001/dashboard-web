@@ -1,3 +1,5 @@
+//Component for custom input element, used to handle all the data for the calculations.
+
 import React from "react";
 
 export const Input = ({ name, data, setData, labelText }) => {

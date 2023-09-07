@@ -1,10 +1,12 @@
+//This contains the dashboard about page component
+
 import { Oswald } from "next/font/google";
 import { Raleway } from "next/font/google";
 
 const oswald = Oswald({ subsets: ["latin"], weight: ["400"] });
 const raleway = Raleway({ subsets: ["latin"], weight: ["400"] });
 
-export default (About) => {
+export default () => {
   return (
     <div className="w-full bg-primary h-screen">
       <h1 className={`font-bold text-3xl mt-5 text-center ${oswald.className}`}>

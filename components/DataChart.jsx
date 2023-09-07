@@ -1,3 +1,5 @@
+//Data chart component used in body composition page. This holds all results calculated from the given data.
+
 import Graph from "@/components/Graph";
 import { Table } from "@/components/Table";
 import massCalculation from "@/utils/massCalculation";
@@ -16,6 +18,7 @@ export const DataChart = ({ data }) => {
     muscularMassPorcentage: 0,
   });
 
+  //Calculations are made when data is submited using the form.
   useEffect(() => {
     if (data.update) {
       setMassData(massCalculation(data));
