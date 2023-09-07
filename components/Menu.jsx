@@ -1,3 +1,5 @@
+//Menu component used to navigate through all pages contained in the project.
+
 import Link from "next/link";
 import { Oswald } from "next/font/google";
 import { Raleway } from "next/font/google";

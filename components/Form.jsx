@@ -1,4 +1,4 @@
-//Form component contained inside the composition, it handles all the data needed to make the calculations.
+//Form component contained inside the composition page, it handles all the data needed to make the calculations.
 
 import React from 'react'
 
@@ -7,7 +7,7 @@ import { Select } from "@/components/Select";
 
 const Form = ({data, setData}) => {
 
-  //Function to handle form submit and input validation
+  //Function to handle form submit and input validation.
   const handleSubmit = (e) => {
     e.preventDefault();
     const values = Object.entries(data)
