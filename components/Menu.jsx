@@ -8,7 +8,7 @@ const raleway = Raleway({ subsets: ["latin"], weight: ["400"] });
 const menuRoutes = [
   { ruta: "/", nombre: "Inicio" },
   { ruta: "/about", nombre: "Acerca de" },
-  { ruta: "/composicion", nombre: "Composición corporal" },
+  { ruta: "/composition", nombre: "Composición corporal" },
 ];
 
 function Menu() {
