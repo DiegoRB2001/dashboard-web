@@ -38,7 +38,6 @@ export default () => {
       .filter(([k, v]) => !["show", "update", "genre", "error"].includes(k))
       .map(([k, v]) => v);
     if (
-      values.includes("") ||
       values.filter((v) => parseFloat(v) <= 0).length > 0
     ) {
       setData({

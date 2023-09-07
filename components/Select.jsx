@@ -11,6 +11,7 @@ export const Select = ({ name, data, setData, labelText }) => {
           className="shadows border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-normal"
           name={name}
           value={data[name]}
+          required
           onChange={(e) => {
             setData({
               ...data,
