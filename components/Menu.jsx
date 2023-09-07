@@ -19,14 +19,14 @@ function Menu() {
       </div>
       <ol>
         {menuRoutes.map((menu, index) => (
-          <Link href={menu.ruta}>
-            <li
-              key={index}
-              className={`${raleway.className} hover:bg-secondary active:bg-primary pl-2`}
-            >
-              {menu.nombre}
-            </li>
-          </Link>
+          <li
+            key={index}
+            className={`${raleway.className} hover:bg-secondary active:bg-primary pl-2`}
+          >
+            <Link href={menu.ruta}>
+              <div className="w-full">{menu.nombre}</div>
+            </Link>
+          </li>
         ))}
       </ol>
     </div>
