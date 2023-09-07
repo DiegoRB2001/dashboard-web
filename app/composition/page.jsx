@@ -56,7 +56,7 @@ export default () => {
   return (
     <div className="bg-primary 2xl:h-screen w-screen">
       <h1 className={`font-bold text-3xl mt-5 text-center ${oswald.className}`}>
-        Composicion corporal
+        Composición corporal
       </h1>
       <div
         className={`flex flex-col 2xl:flex-row gap-5 mt-10 justify-center ${raleway.className}`}

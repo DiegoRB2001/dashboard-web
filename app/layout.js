@@ -5,7 +5,7 @@ import Menu from '@/components/Menu'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Next js Dashboard',
+  title: 'Next.js Dashboard',
   description: 'Dashboard elaborado con Next js',
 }
 
