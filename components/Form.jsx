@@ -33,7 +33,7 @@ const Form = ({data, setData}) => {
             <div className="bg-white w-min 2xl:w-auto p-10 mx-auto flex flex-col gap-5 justify-center items-center rounded-md shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
               <div className="flex flex-row gap-5">
                 <Select
-                  labelText={"Genero"}
+                  labelText={"Género"}
                   name={"genre"}
                   data={data}
                   setData={setData}
