@@ -1,39 +1,29 @@
-import { Chart } from "chart.js";
-import { useEffect } from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
 
-const Graph = ({ porcentajes, calculado }) => {
-  useEffect(() => {
-    const pie = document.getElementById("pie-chart").getContext("2d");
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-    const chart = new Chart(pie, {
-      type: "pie",
-      data: {
-        labels: ["Masa grasa", "Masa osea", "Masa residual", "Masa muscular"],
-        datasets: [
-          {
-            label: "%",
-            data: [...porcentajes],
-            borderWidth: 1,
-            borderColor: "#FFFFFF",
-            backgroundColor: ["#c8b6ff", "#e7c6ff", "#bbd0ff", "#ffd6ff"],
-          },
-        ],
-      },
-      options: {
-        plugins: {
-          legend: {
-            position: "top",
-          },
-          title: { display: true, text: "Porcentajes de masa" },
-        },
-        responsive: true,
-      },
-    });
-  }, [calculado]);
-
+const Graph = ({ percentages }) => {
   return (
-    <div className="w-1/2">
-      <canvas id="pie-chart"></canvas>
+    <div className="h-1/2">
+      <Pie
+        options={{
+          responsive: true,
+          maintainAspectRatio: false,
+        }}
+        data={{
+          labels: ["Masa grasa", "Masa osea", "Masa residual", "Masa muscular"],
+          datasets: [
+            {
+              label: "%",
+              data: [...percentages],
+              borderWidth: 1,
+              borderColor: "#FFFFFF",
+              backgroundColor: ["#c8b6ff", "#e7c6ff", "#bbd0ff", "#ffd6ff"],
+            },
+          ],
+        }}
+      />
     </div>
   );
 };

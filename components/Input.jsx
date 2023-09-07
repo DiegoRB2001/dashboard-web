@@ -1,17 +1,25 @@
 import React from "react";
 
-export const Input = ({ name, handleChange, setCalculado }) => {
+export const Input = ({ name, data, setData, labelText }) => {
   return (
     <div>
-      <h1 className="font-bold">{name}</h1>
-      <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        type="text"
-        onChange={(e) => {
-          handleChange(parseFloat(e.target.value));
-          setCalculado(false);
-        }}
-      />
+      <label className="font-bold">
+        {labelText}
+        <input
+          value={data[name]}
+          name={name}
+          className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-normal block"
+          type="number"
+          onChange={(e) => {
+            setData({
+              ...data,
+              [name]: e.target.value == "" ? "" : parseFloat(e.target.value),
+              update: false,
+              error: "",
+            });
+          }}
+        />
+      </label>
     </div>
   );
 };
