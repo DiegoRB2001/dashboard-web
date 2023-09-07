@@ -24,7 +24,7 @@ export const Table = ({
           <td className="px-6 py-2">{fatMass.toFixed(2)}</td>
         </tr>
         <tr>
-          <td className="px-6 py-2 border-r">Masa osea</td>
+          <td className="px-6 py-2 border-r">Masa ósea</td>
           <td className="px-6 py-2 border-r">
             {boneMassPorcentage.toFixed(2)}
           </td>

@@ -14,7 +14,7 @@ const Graph = ({ percentages }) => {
           maintainAspectRatio: false,
         }}
         data={{
-          labels: ["Masa grasa", "Masa osea", "Masa residual", "Masa muscular"],
+          labels: ["Masa grasa", "Masa ósea", "Masa residual", "Masa muscular"],
           datasets: [
             {
               label: "%",
